@@ -53,6 +53,21 @@ namespace gdk
 		using material_ptr_type = std::shared_ptr<gdk::material>;
 		using model_ptr_type = std::shared_ptr<gdk::model>;
 
+		enum class alignment
+		{
+			left_edge,
+			right_edge,
+			upper_edge,
+			lower_edge,
+
+			left_upper_corner,
+			left_lower_corner,
+			right_upper_corner,
+			right_lower_corner,
+			
+			center,
+		};
+
 	private:
 		gdk::graphics::context::context_shared_ptr_type pContext;
 
@@ -62,6 +77,8 @@ namespace gdk
 		model_ptr_type m_Model;
 
 		text_map m_TextMap;
+
+		const text_renderer::alignment m_Alignment;
 
 		// replace this stuff with a 4x4
 		Vector3<float> m_Position;
@@ -73,18 +90,46 @@ namespace gdk
 		void build_character_quad(vertex_attribute_array_type& posData,
 			vertex_attribute_array_type& uvData,
 			const wchar_t character,
-			gdk::IntVector2<size_t> aCharacterOffsetInCells);
+			gdk::IntVector2<size_t> aCharacterOffsetInCells,
+			const size_t aLongestLineLength,
+			const size_t aLineCount,
+			const text_renderer::alignment aAlignment);
 
 		//! builds model data for the string
 		void build_string_model(vertex_data_view::UsageHint hint, const std::wstring &aText);
 
 	public:
+		/// This is duplication of nearly the entire graphics::entity interface. Some serious thought needs to be had
+		// about providing some sort of "drawables" interface (more restrictive than the entity interface, from which entity inherits and
+		/// scenes operate on instead of the entity interface).
+		/// this would let graphics::scenes work directly with higher level abstractions such as this text renderer. no need for duping
+
+		//void hide();
+
+		//void show();
+
+		//bool isHidden() const;
+
+		void set_model_matrix(const graphics_vector3_type& aWorldPos,
+			const graphics_quaternion_type& aRotation,
+			const graphics_vector3_type& aScale = graphics_vector3_type::One);
+
+		//void set_model_matrix(const graphics_mat4x4_type& a);
+		///
+
+
 		//! can be added to multiple scenes
 		void add_to_scene(gdk::graphics::context::scene_shared_ptr_type pScene);
 
+		//! removes the text renderer's entities from the scene
+		/// if the scene does not contain them, no error will occur
+		void remove_from_scene(gdk::graphics::context::scene_shared_ptr_type pScene);
+
 	protected:
 		text_renderer(gdk::graphics::context::context_shared_ptr_type pContext, 
-			gdk::text_map aTextMap);
+			gdk::text_map aTextMap,
+			const text_renderer::alignment aAlignment,
+			std::shared_ptr<material> aMaterial = nullptr);
 
 	public:
 		virtual ~text_renderer() = default;

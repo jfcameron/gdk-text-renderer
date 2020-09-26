@@ -15,6 +15,7 @@ namespace gdk
 
 		dynamic_text_renderer(gdk::graphics::context::context_shared_ptr_type pContext,
 			gdk::text_map aTextMap,
+			const text_renderer::alignment aAlignment,
 			std::wstring aText = L" ");
 
 		~dynamic_text_renderer() = default;

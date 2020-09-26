@@ -13,6 +13,7 @@ namespace gdk
 	public:
 		static_text_renderer(gdk::graphics::context::context_shared_ptr_type pContext,
 			gdk::text_map aTextMap,
+			const text_renderer::alignment aAlignment,
 			std::wstring aText);
 
 		~static_text_renderer() = default;
