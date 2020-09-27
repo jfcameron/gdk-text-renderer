@@ -43,6 +43,8 @@ namespace gdk
 	//
 	// Anchoring: side & corner anchoring
 	//
+	// localization? global write mode and language write mode, if local does not have text, throw
+	//
 	class text_renderer
 	{
 	public:
