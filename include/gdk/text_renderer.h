@@ -104,11 +104,11 @@ namespace gdk
 		/// scenes operate on instead of the entity interface).
 		/// this would let graphics::scenes work directly with higher level abstractions such as this text renderer. no need for duping
 
-		//void hide();
+		void hide();
 
-		//void show();
+		void show();
 
-		//bool isHidden() const;
+		bool isHidden() const;
 
 		void set_model_matrix(const graphics_vector3_type& aWorldPos,
 			const graphics_quaternion_type& aRotation,

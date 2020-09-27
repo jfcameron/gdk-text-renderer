@@ -221,3 +221,18 @@ void text_renderer::set_model_matrix(const graphics_vector3_type& aWorldPos,
 
 	m_Entity->set_model_matrix(m_Position, m_Rotation, m_Scale);
 }
+
+void text_renderer::hide()
+{
+	m_Entity->hide();
+}
+
+void text_renderer::show()
+{
+	m_Entity->show();
+}
+
+bool text_renderer::isHidden() const
+{
+	return m_Entity->isHidden();
+}
