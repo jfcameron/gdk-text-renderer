@@ -126,7 +126,7 @@ void text_renderer::remove_from_scene(gdk::graphics::context::scene_shared_ptr_t
 }
 
 void text_renderer::build_string_model(vertex_data_view::UsageHint hint, 
-	const std::wstring& aText)
+	const std::wstring aText)
 {
 	text_map aTextMap = m_TextMap;
 

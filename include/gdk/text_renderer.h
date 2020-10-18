@@ -124,7 +124,7 @@ namespace gdk
 			const text_renderer::alignment aAlignment);
 
 		//! builds model data for the string
-		void build_string_model(vertex_data_view::UsageHint hint, const std::wstring &aText);
+		void build_string_model(vertex_data_view::UsageHint hint, const std::wstring aText);
 
 	public:
 		/// This is duplication of nearly the entire graphics::entity interface. Some serious thought needs to be had

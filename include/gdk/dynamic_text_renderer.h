@@ -10,6 +10,9 @@ namespace gdk
 	/// \brief base text renderer
 	class dynamic_text_renderer final : public text_renderer
 	{
+		/// \brief text buffer, used to prevent unnecessary vertex data reconstruction
+		std::wstring m_Text;
+
 	public:
 		void update_text(const std::wstring &string);
 
