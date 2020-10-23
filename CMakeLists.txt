@@ -28,7 +28,7 @@ jfc_project(library
         ${CMAKE_CURRENT_SOURCE_DIR}/src/include
 
     LIBRARIES
-        ${gdkgraphics}
+        ${gdkgraphics_LIBRARIES} 
 
     DEPENDENCIES
         "gdkgraphics"
